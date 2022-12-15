@@ -21,8 +21,8 @@ include "condb.php";
         <td><?=$row ['user_id']?></td>
         <td><?=$row ['user_name']?></td>
         <tdr><?=$row ['user_pass']?></tdr>
-        <td><button class="btn_edit" data= "<?=$row ['user_id']?>">EDIT</button></td>
-        <td><button class="btn_del" data= "<?=$row ['user_id']?>">DEL</button></td>
+        <td><button data= "<?=$row ['user_id']?>">EDIT</button></td>
+        <td><button data= "<?=$row ['user_id']?>">DEL</button></td>
     </tr>
     <?php
     }
@@ -30,22 +30,6 @@ include "condb.php";
     </tbody>
 </table>
 
-<script>
-    $(".btn_del").click(function(){
-        let id_val = $(this).attr("data");
-        $.ajax({
-            url:"/model/user_add.php",
-            method:"GET",
-            data: {
-                id: id_val
-            },
-            success: function(res){
-                $("#div_res").html(res);
-                $("#div_action").load("/model/user_data.php");
-            }
-        });
-    });
-</script>
 
 
 
